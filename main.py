@@ -7,7 +7,7 @@ TODAY = date.today()
 YESTERDAY = TODAY - timedelta(days=1)
 DAY_BEFORE_YESTERDAY = YESTERDAY - timedelta(days=1)
 STOCK = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+COMPANY_NAME = "Tesla"
 ALPHAV_API_KEY = os.environ["ALPHAV_API_KEY"]
 NEWSAPI_KEY = os.environ["NEWSAPI_KEY"]
 NEWSAPI_URL = "https://newsapi.org/v2/everything"
@@ -18,9 +18,7 @@ ALPHAV_PRAM = {
     "apikey": ALPHAV_API_KEY
 }
 NEWSAPI_PRAM = {
-    "q": "Tesla",
-    "from": YESTERDAY,
-    "sortBy": "popularity",
+    "qInTitle": COMPANY_NAME,
     "apiKey": NEWSAPI_KEY
 }
 percentage = 0
@@ -46,3 +44,5 @@ def get_news():
         print(f"{STOCK} : 🔻{math.floor(percentage)}%")
     for _ in range(0,5):
         print(top_five[_])
+
+get_price_percentage()
